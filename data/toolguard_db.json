@@ -1,0 +1,6474 @@
+{
+  "settings": {
+    "lowThreshold": 0.1,
+    "mediumThreshold": 0.2,
+    "highThreshold": 0.3,
+    "criticalThreshold": 0.3,
+    "machineId": "CNC-DMG-Mori-01",
+    "machineStatus": "ONLINE",
+    "toolId": "Tool_T01",
+    "samplingRateHz": 50000,
+    "enableAlerts": true
+  },
+  "predictions": [
+    {
+      "id": "pred_1790242792260",
+      "timestamp": "2026-09-24T09:39:52.260Z",
+      "toolId": "Tool_T01",
+      "cycle": 50,
+      "cuttingForce": 210,
+      "vibration": 0.25,
+      "acousticEmission": 0.07,
+      "spindleSpeed": 10400,
+      "feedRate": 1550,
+      "depthOfCut": 0.75,
+      "predictedWear": 0.1129,
+      "riskLevel": "MEDIUM",
+      "toolHealth": "Moderate Wear",
+      "rulCycles": 78,
+      "modelVersion": "XGBoost-1.7",
+      "isDemo": false
+    },
+    {
+      "id": "pred_demo_3",
+      "timestamp": "2026-09-24T08:39:34.202Z",
+      "toolId": "Tool_T01",
+      "cycle": 95,
+      "cuttingForce": 268.5,
+      "vibration": 0.312,
+      "acousticEmission": 0.089,
+      "spindleSpeed": 10380,
+      "feedRate": 1550,
+      "depthOfCut": 0.75,
+      "predictedWear": 0.246,
+      "riskLevel": "HIGH",
+      "toolHealth": "High Wear",
+      "rulCycles": 12,
+      "modelVersion": "XGB-v1.0 (Demo)",
+      "isDemo": true
+    },
+    {
+      "id": "pred_demo_2",
+      "timestamp": "2026-09-24T07:39:34.202Z",
+      "toolId": "Tool_T01",
+      "cycle": 78,
+      "cuttingForce": 215.8,
+      "vibration": 0.234,
+      "acousticEmission": 0.068,
+      "spindleSpeed": 10400,
+      "feedRate": 1550,
+      "depthOfCut": 0.75,
+      "predictedWear": 0.174,
+      "riskLevel": "MEDIUM",
+      "toolHealth": "Moderate Wear",
+      "rulCycles": 35,
+      "modelVersion": "XGB-v1.0 (Demo)",
+      "isDemo": true
+    },
+    {
+      "id": "pred_demo_1",
+      "timestamp": "2026-09-24T06:39:34.202Z",
+      "toolId": "Tool_T01",
+      "cycle": 42,
+      "cuttingForce": 165.4,
+      "vibration": 0.182,
+      "acousticEmission": 0.051,
+      "spindleSpeed": 10400,
+      "feedRate": 1550,
+      "depthOfCut": 0.75,
+      "predictedWear": 0.092,
+      "riskLevel": "LOW",
+      "toolHealth": "Normal Operation",
+      "rulCycles": 68,
+      "modelVersion": "XGB-v1.0 (Demo)",
+      "isDemo": true
+    }
+  ],
+  "datasets": [
+    {
+      "id": "ds_1790242782903",
+      "name": "PHM2010_Milling_Sensor_Dataset.csv",
+      "uploadedAt": "2026-09-24T09:39:42.903Z",
+      "rowCount": 315,
+      "columnCount": 9,
+      "columns": [
+        "tool_id",
+        "cycle",
+        "cutting_force",
+        "vibration",
+        "acoustic_emission",
+        "spindle_speed",
+        "feed_rate",
+        "depth_of_cut",
+        "tool_wear"
+      ],
+      "sampleRows": [
+        {
+          "tool_id": "Tool_T01",
+          "cycle": 1,
+          "cutting_force": 123.44,
+          "vibration": 0.218,
+          "acoustic_emission": 0.0591,
+          "spindle_speed": 10416,
+          "feed_rate": 1552.8,
+          "depth_of_cut": 0.741,
+          "tool_wear": 0.0213
+        },
+        {
+          "tool_id": "Tool_T01",
+          "cycle": 2,
+          "cutting_force": 133.68,
+          "vibration": 0.153,
+          "acoustic_emission": 0.0611,
+          "spindle_speed": 10399,
+          "feed_rate": 1569.9,
+          "depth_of_cut": 0.731,
+          "tool_wear": 0.0228
+        },
+        {
+          "tool_id": "Tool_T01",
+          "cycle": 3,
+          "cutting_force": 144.11,
+          "vibration": 0.159,
+          "acoustic_emission": 0.0573,
+          "spindle_speed": 10451,
+          "feed_rate": 1551,
+          "depth_of_cut": 0.726,
+          "tool_wear": 0.0241
+        },
+        {
+          "tool_id": "Tool_T01",
+          "cycle": 4,
+          "cutting_force": 143.19,
+          "vibration": 0.159,
+          "acoustic_emission": 0.047,
+          "spindle_speed": 10438,
+          "feed_rate": 1566.7,
+          "depth_of_cut": 0.757,
+          "tool_wear": 0.0256
+        },
+        {
+          "tool_id": "Tool_T01",
+          "cycle": 5,
+          "cutting_force": 124.79,
+          "vibration": 0.213,
+          "acoustic_emission": 0.0553,
+          "spindle_speed": 10442,
+          "feed_rate": 1547.9,
+          "depth_of_cut": 0.745,
+          "tool_wear": 0.0269
+        }
+      ],
+      "preprocessed": false
+    }
+  ],
+  "trainedModel": {
+    "baseScore": 0.10296746031746024,
+    "learningRate": 0.08,
+    "maxDepth": 4,
+    "nEstimators": 45,
+    "featureNames": [
+      "cutting_force",
+      "vibration",
+      "acoustic_emission",
+      "spindle_speed",
+      "feed_rate",
+      "depth_of_cut"
+    ],
+    "trees": [
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37349999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 158.38,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.236,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10475.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.07672301587301579,
+                "sampleCount": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.06361246031746023,
+                "sampleCount": 20
+              },
+              "sampleCount": 38,
+              "gain": 0.0016284000029239752
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.266125,
+              "left": {
+                "isLeaf": true,
+                "value": -0.05099053724053716,
+                "sampleCount": 26
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.03840079365079357,
+                "sampleCount": 18
+              },
+              "sampleCount": 44,
+              "gain": 0.0016858811188811187
+            },
+            "sampleCount": 82,
+            "gain": 0.011727694023806738
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 180.93375,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10322.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.014441373360938495,
+                "sampleCount": 23
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.03134246031746024,
+                "sampleCount": 12
+              },
+              "sampleCount": 35,
+              "gain": 0.0022525285807453426
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10326.625,
+              "left": {
+                "isLeaf": true,
+                "value": 0.004315873015873095,
+                "sampleCount": 6
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.020576984126984207,
+                "sampleCount": 9
+              },
+              "sampleCount": 15,
+              "gain": 0.000951925444444445
+            },
+            "sampleCount": 50,
+            "gain": 0.012359319771428571
+          },
+          "sampleCount": 132,
+          "gain": 0.06864378832882487
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 213.615,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10468,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10351.75,
+              "left": {
+                "isLeaf": true,
+                "value": 0.009507539682539763,
+                "sampleCount": 4
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.03290946275946284,
+                "sampleCount": 13
+              },
+              "sampleCount": 17,
+              "gain": 0.0016751647171945703
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 206.98000000000002,
+              "left": {
+                "isLeaf": true,
+                "value": 0.047532539682539766,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.05977003968253977,
+                "sampleCount": 8
+              },
+              "sampleCount": 13,
+              "gain": 0.0004607889423076921
+            },
+            "sampleCount": 30,
+            "gain": 0.005636130680241329
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10431.375,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10318.25,
+              "left": {
+                "isLeaf": true,
+                "value": 0.11377698412698423,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.098173716153128,
+                "sampleCount": 17
+              },
+              "sampleCount": 26,
+              "gain": 0.0014326800628456514
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 219.225,
+              "left": {
+                "isLeaf": true,
+                "value": 0.060132539682539767,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.0761598124098125,
+                "sampleCount": 11
+              },
+              "sampleCount": 16,
+              "gain": 0.0008830025568181815
+            },
+            "sampleCount": 42,
+            "gain": 0.01041274835393773
+          },
+          "sampleCount": 72,
+          "gain": 0.04701801667063494
+        },
+        "sampleCount": 204,
+        "gain": 0.5512077149740044
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 161.865,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.23399999999999999,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10488.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.07092122151675476,
+                "sampleCount": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.05821179682539675,
+                "sampleCount": 21
+              },
+              "sampleCount": 39,
+              "gain": 0.0015655933826267633
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10449.25,
+              "left": {
+                "isLeaf": true,
+                "value": -0.02931428513998072,
+                "sampleCount": 22
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.04916659641099634,
+                "sampleCount": 33
+              },
+              "sampleCount": 55,
+              "gain": 0.005202308268977079
+            },
+            "sampleCount": 94,
+            "gain": 0.011916490662240525
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 177.51749999999998,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10321.75,
+              "left": {
+                "isLeaf": true,
+                "value": -0.014828817115251827,
+                "sampleCount": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.02770551803751797,
+                "sampleCount": 11
+              },
+              "sampleCount": 29,
+              "gain": 0.0011320781543108604
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10349,
+              "left": {
+                "isLeaf": true,
+                "value": 0.000941225991399982,
+                "sampleCount": 13
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.01939888095238103,
+                "sampleCount": 8
+              },
+              "sampleCount": 21,
+              "gain": 0.0016872020367855879
+            },
+            "sampleCount": 50,
+            "gain": 0.009336010585622858
+          },
+          "sampleCount": 144,
+          "gain": 0.05929232622667623
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.4795,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 203.76999999999998,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10385.5,
+              "left": {
+                "isLeaf": true,
+                "value": 0.013291711963157694,
+                "sampleCount": 8
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.0348688288156289,
+                "sampleCount": 10
+              },
+              "sampleCount": 18,
+              "gain": 0.0020692087629564306
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 216.7,
+              "left": {
+                "isLeaf": true,
+                "value": 0.04888343853222808,
+                "sampleCount": 19
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.0711027172565997,
+                "sampleCount": 6
+              },
+              "sampleCount": 25,
+              "gain": 0.0022512553424627866
+            },
+            "sampleCount": 43,
+            "gain": 0.00876300496076403
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10403.5,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10342.5,
+              "left": {
+                "isLeaf": true,
+                "value": 0.10362003323996274,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.09075864239028954,
+                "sampleCount": 15
+              },
+              "sampleCount": 25,
+              "gain": 0.0009924922475283448
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10475.625,
+              "left": {
+                "isLeaf": true,
+                "value": 0.07906714862914871,
+                "sampleCount": 3
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.06446604256854264,
+                "sampleCount": 6
+              },
+              "sampleCount": 9,
+              "gain": 0.00042638459638613425
+            },
+            "sampleCount": 34,
+            "gain": 0.004671869027797117
+          },
+          "sampleCount": 77,
+          "gain": 0.04152758940699439
+        },
+        "sampleCount": 221,
+        "gain": 0.488371991998713
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 2,
+        "featureName": "acoustic_emission",
+        "threshold": 0.08365,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 160.02,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.23399999999999999,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10488.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.06437343243738972,
+                "sampleCount": 17
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.054000467114452735,
+                "sampleCount": 19
+              },
+              "sampleCount": 36,
+              "gain": 0.0009653968416068179
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10458.25,
+              "left": {
+                "isLeaf": true,
+                "value": -0.03001743239985343,
+                "sampleCount": 24
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.04643549368516659,
+                "sampleCount": 32
+              },
+              "sampleCount": 56,
+              "gain": 0.0036967232416223925
+            },
+            "sampleCount": 92,
+            "gain": 0.008332118703911782
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.322,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.30562500000000004,
+              "left": {
+                "isLeaf": true,
+                "value": -0.021396245472189573,
+                "sampleCount": 20
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.009046514222704758,
+                "sampleCount": 5
+              },
+              "sampleCount": 25,
+              "gain": 0.0006100634477380076
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10307,
+              "left": {
+                "isLeaf": true,
+                "value": -0.001986150106492471,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.015056881984180141,
+                "sampleCount": 8
+              },
+              "sampleCount": 18,
+              "gain": 0.0012909553015275398
+            },
+            "sampleCount": 43,
+            "gain": 0.006289293057223028
+          },
+          "sampleCount": 135,
+          "gain": 0.04313177402252647
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 220.4375,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10448.625,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10383,
+              "left": {
+                "isLeaf": true,
+                "value": 0.008117084351247321,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.025548034649516847,
+                "sampleCount": 10
+              },
+              "sampleCount": 19,
+              "gain": 0.0014392327656350958
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.10265,
+              "left": {
+                "isLeaf": true,
+                "value": 0.04496311908434923,
+                "sampleCount": 23
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.07046045865911528,
+                "sampleCount": 4
+              },
+              "sampleCount": 27,
+              "gain": 0.002215204367998729
+            },
+            "sampleCount": 46,
+            "gain": 0.011030105781435085
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.512,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10481.5,
+              "left": {
+                "isLeaf": true,
+                "value": 0.07419180805432482,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.05982851530090832,
+                "sampleCount": 6
+              },
+              "sampleCount": 16,
+              "gain": 0.0007736406702013019
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10318.25,
+              "left": {
+                "isLeaf": true,
+                "value": 0.096003278293184,
+                "sampleCount": 8
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.08493269444427476,
+                "sampleCount": 14
+              },
+              "sampleCount": 22,
+              "gain": 0.000623930754392809
+            },
+            "sampleCount": 38,
+            "gain": 0.00376209138333395
+          },
+          "sampleCount": 84,
+          "gain": 0.04162093792485583
+        },
+        "sampleCount": 219,
+        "gain": 0.42683524373661735
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 2,
+        "featureName": "acoustic_emission",
+        "threshold": 0.08365,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 160.13,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.23399999999999999,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10488.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.05981431586708988,
+                "sampleCount": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.0489459268213199,
+                "sampleCount": 18
+              },
+              "sampleCount": 36,
+              "gain": 0.001063096924051914
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10458.25,
+              "left": {
+                "isLeaf": true,
+                "value": -0.027451751914660035,
+                "sampleCount": 25
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.04196693614761823,
+                "sampleCount": 25
+              },
+              "sampleCount": 50,
+              "gain": 0.0026336321664589793
+            },
+            "sampleCount": 86,
+            "gain": 0.008098733304423258
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 179.335,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.3105,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0186090998077795,
+                "sampleCount": 16
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.0064939567877072635,
+                "sampleCount": 11
+              },
+              "sampleCount": 27,
+              "gain": 0.0009567665744384332
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10307,
+              "left": {
+                "isLeaf": true,
+                "value": -0.001396844845878073,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.01377928130826501,
+                "sampleCount": 9
+              },
+              "sampleCount": 14,
+              "gain": 0.0007402975876493543
+            },
+            "sampleCount": 41,
+            "gain": 0.004475452595996087
+          },
+          "sampleCount": 127,
+          "gain": 0.03758580013929645
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.4565,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10437.375,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 184.055,
+              "left": {
+                "isLeaf": true,
+                "value": 0.00406348263110079,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.020578173552964908,
+                "sampleCount": 7
+              },
+              "sampleCount": 12,
+              "gain": 0.0007954771307137117
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 210.65375,
+              "left": {
+                "isLeaf": true,
+                "value": 0.031796648692420264,
+                "sampleCount": 12
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.04321588753196583,
+                "sampleCount": 11
+              },
+              "sampleCount": 23,
+              "gain": 0.0007483769595237118
+            },
+            "sampleCount": 35,
+            "gain": 0.00437751279249307
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10403.5,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10342.5,
+              "left": {
+                "isLeaf": true,
+                "value": 0.08838650582370941,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.0765503220673521,
+                "sampleCount": 14
+              },
+              "sampleCount": 23,
+              "gain": 0.0007674783037041914
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 213.55625,
+              "left": {
+                "isLeaf": true,
+                "value": 0.04661870958568709,
+                "sampleCount": 6
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.061611475120843216,
+                "sampleCount": 14
+              },
+              "sampleCount": 20,
+              "gain": 0.0009440886772470957
+            },
+            "sampleCount": 43,
+            "gain": 0.006196943916029455
+          },
+          "sampleCount": 78,
+          "gain": 0.03213062292070443
+        },
+        "sampleCount": 205,
+        "gain": 0.3308213129372505
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 2,
+        "featureName": "acoustic_emission",
+        "threshold": 0.08365,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 160.02,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.23399999999999999,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10488.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.05512377466453461,
+                "sampleCount": 17
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.04606914156450321,
+                "sampleCount": 18
+              },
+              "sampleCount": 35,
+              "gain": 0.0007167952130374962
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10455.625,
+              "left": {
+                "isLeaf": true,
+                "value": -0.024890333739648992,
+                "sampleCount": 23
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.03932913696522553,
+                "sampleCount": 29
+              },
+              "sampleCount": 52,
+              "gain": 0.002674144591105292
+            },
+            "sampleCount": 87,
+            "gain": 0.0064244597958563725
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 178.95,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10344,
+              "left": {
+                "isLeaf": true,
+                "value": -0.010811385248367254,
+                "sampleCount": 25
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.023955694426664453,
+                "sampleCount": 8
+              },
+              "sampleCount": 33,
+              "gain": 0.0010471082653010179
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10356,
+              "left": {
+                "isLeaf": true,
+                "value": 0.003259227389073564,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.018693672262664888,
+                "sampleCount": 4
+              },
+              "sampleCount": 14,
+              "gain": 0.0006806345387312272
+            },
+            "sampleCount": 47,
+            "gain": 0.004614661069399588
+          },
+          "sampleCount": 134,
+          "gain": 0.032130066633309334
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.46349999999999997,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10448.625,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10323,
+              "left": {
+                "isLeaf": true,
+                "value": 0.001097080249369789,
+                "sampleCount": 4
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.019530400771396405,
+                "sampleCount": 15
+              },
+              "sampleCount": 19,
+              "gain": 0.0010730125435824242
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 219.72750000000002,
+              "left": {
+                "isLeaf": true,
+                "value": 0.03480177169643426,
+                "sampleCount": 20
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.05367071922752853,
+                "sampleCount": 4
+              },
+              "sampleCount": 24,
+              "gain": 0.0011867906031039612
+            },
+            "sampleCount": 43,
+            "gain": 0.005272118312118112
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 228.07999999999998,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 206.63750000000002,
+              "left": {
+                "isLeaf": true,
+                "value": 0.04039977139086474,
+                "sampleCount": 3
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.059104265423333746,
+                "sampleCount": 16
+              },
+              "sampleCount": 19,
+              "gain": 0.0008838520345532685
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10385,
+              "left": {
+                "isLeaf": true,
+                "value": 0.07790466896233017,
+                "sampleCount": 15
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.06249807784199533,
+                "sampleCount": 7
+              },
+              "sampleCount": 22,
+              "gain": 0.001132869102030181
+            },
+            "sampleCount": 41,
+            "gain": 0.0028951905900875263
+          },
+          "sampleCount": 84,
+          "gain": 0.028886342390020556
+        },
+        "sampleCount": 218,
+        "gain": 0.2889944997549573
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 151.97375,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.23399999999999999,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10488.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.051035883933201895,
+                "sampleCount": 20
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.04274472135045406,
+                "sampleCount": 18
+              },
+              "sampleCount": 38,
+              "gain": 0.0006512530450126524
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10462.75,
+              "left": {
+                "isLeaf": true,
+                "value": -0.025840021892024754,
+                "sampleCount": 12
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.03657967749648687,
+                "sampleCount": 26
+              },
+              "sampleCount": 38,
+              "gain": 0.0009470037679148882
+            },
+            "sampleCount": 76,
+            "gain": 0.0036817117337314157
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 176.905,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10362.25,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0133156444895499,
+                "sampleCount": 27
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.027095203896415756,
+                "sampleCount": 24
+              },
+              "sampleCount": 51,
+              "gain": 0.0024125453887427406
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 189.63,
+              "left": {
+                "isLeaf": true,
+                "value": 0.003313378681164841,
+                "sampleCount": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.014030489187197875,
+                "sampleCount": 5
+              },
+              "sampleCount": 16,
+              "gain": 0.0003948190729949249
+            },
+            "sampleCount": 67,
+            "gain": 0.008528663818936633
+          },
+          "sampleCount": 143,
+          "gain": 0.02532336673000842
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.1042,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 203.76999999999998,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10385.5,
+              "left": {
+                "isLeaf": true,
+                "value": 0.008314768919795473,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.02607805750479287,
+                "sampleCount": 7
+              },
+              "sampleCount": 16,
+              "gain": 0.0012424167840809769
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 224.85625,
+              "left": {
+                "isLeaf": true,
+                "value": 0.036863565404837075,
+                "sampleCount": 21
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.05625823146932789,
+                "sampleCount": 5
+              },
+              "sampleCount": 26,
+              "gain": 0.001519079712849103
+            },
+            "sampleCount": 42,
+            "gain": 0.005948780283346489
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 234.15499999999997,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.11355,
+              "left": {
+                "isLeaf": true,
+                "value": 0.05341453336995457,
+                "sampleCount": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.0679309410642418,
+                "sampleCount": 5
+              },
+              "sampleCount": 16,
+              "gain": 0.0007243709424419938
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10337,
+              "left": {
+                "isLeaf": true,
+                "value": 0.07486098961860405,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.066728871390633,
+                "sampleCount": 8
+              },
+              "sampleCount": 17,
+              "gain": 0.000280085704406255
+            },
+            "sampleCount": 33,
+            "gain": 0.001410856695699888
+          },
+          "sampleCount": 75,
+          "gain": 0.020656887736717342
+        },
+        "sampleCount": 218,
+        "gain": 0.2666568332103053
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 151.97375,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.23399999999999999,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10452.625,
+              "left": {
+                "isLeaf": true,
+                "value": -0.04788966723563976,
+                "sampleCount": 13
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.04018461664300458,
+                "sampleCount": 21
+              },
+              "sampleCount": 34,
+              "gain": 0.00047668854898157446
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10462.75,
+              "left": {
+                "isLeaf": true,
+                "value": -0.023772820140662773,
+                "sampleCount": 12
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.034288404714256406,
+                "sampleCount": 25
+              },
+              "sampleCount": 37,
+              "gain": 0.0008965744777654091
+            },
+            "sampleCount": 71,
+            "gain": 0.0026600349897665616
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 176.905,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 158.505,
+              "left": {
+                "isLeaf": true,
+                "value": -0.023066046480521393,
+                "sampleCount": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.013677667204163232,
+                "sampleCount": 34
+              },
+              "sampleCount": 52,
+              "gain": 0.001037359600909457
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10349,
+              "left": {
+                "isLeaf": true,
+                "value": 0.000014785617093108516,
+                "sampleCount": 13
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.013178569590894668,
+                "sampleCount": 8
+              },
+              "sampleCount": 21,
+              "gain": 0.0008581743659489113
+            },
+            "sampleCount": 73,
+            "gain": 0.007211868677166224
+          },
+          "sampleCount": 144,
+          "gain": 0.02458344008873491
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 222.1775,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 202.7775,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10411.375,
+              "left": {
+                "isLeaf": true,
+                "value": 0.009893337949700275,
+                "sampleCount": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.02362927062853456,
+                "sampleCount": 10
+              },
+              "sampleCount": 21,
+              "gain": 0.0009883020533962585
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.1023625,
+              "left": {
+                "isLeaf": true,
+                "value": 0.03400737959797811,
+                "sampleCount": 22
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.04904384005083578,
+                "sampleCount": 8
+              },
+              "sampleCount": 30,
+              "gain": 0.0013264248386420704
+            },
+            "sampleCount": 51,
+            "gain": 0.005754236682135646
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10370.75,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10346,
+              "left": {
+                "isLeaf": true,
+                "value": 0.06843747845246799,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.06255257484561624,
+                "sampleCount": 9
+              },
+              "sampleCount": 18,
+              "gain": 0.000155844407078715
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10463.75,
+              "left": {
+                "isLeaf": true,
+                "value": 0.05504981270554159,
+                "sampleCount": 8
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.044008425554161415,
+                "sampleCount": 7
+              },
+              "sampleCount": 15,
+              "gain": 0.00045513899284620906
+            },
+            "sampleCount": 33,
+            "gain": 0.0019905813534717093
+          },
+          "sampleCount": 84,
+          "gain": 0.017171168391890382
+        },
+        "sampleCount": 228,
+        "gain": 0.21817183186771166
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 189.46999999999997,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 3,
+          "featureName": "spindle_speed",
+          "threshold": 10400.5,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 174.66,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10363.25,
+              "left": {
+                "isLeaf": true,
+                "value": -0.01081142508241842,
+                "sampleCount": 29
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.02110812165296337,
+                "sampleCount": 11
+              },
+              "sampleCount": 40,
+              "gain": 0.00084552513312033
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10320,
+              "left": {
+                "isLeaf": true,
+                "value": -0.004038566980414945,
+                "sampleCount": 14
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.010624677776252398,
+                "sampleCount": 7
+              },
+              "sampleCount": 21,
+              "gain": 0.001003383485038351
+            },
+            "sampleCount": 61,
+            "gain": 0.002892131020459023
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.2705,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.21350000000000002,
+              "left": {
+                "isLeaf": true,
+                "value": -0.04047974693207255,
+                "sampleCount": 23
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.032308636694469116,
+                "sampleCount": 42
+              },
+              "sampleCount": 65,
+              "gain": 0.000992260970300848
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 160.00375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.023492131741063692,
+                "sampleCount": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.003240612903842706,
+                "sampleCount": 2
+              },
+              "sampleCount": 13,
+              "gain": 0.0006940560257473044
+            },
+            "sampleCount": 78,
+            "gain": 0.002380455444428905
+          },
+          "sampleCount": 139,
+          "gain": 0.019840816947635353
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.45999999999999996,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10449,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10323.75,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0015883554381315123,
+                "sampleCount": 3
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.01565583438863463,
+                "sampleCount": 11
+              },
+              "sampleCount": 14,
+              "gain": 0.00046646434376814225
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.435375,
+              "left": {
+                "isLeaf": true,
+                "value": 0.024858504021155598,
+                "sampleCount": 15
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.03725555501147329,
+                "sampleCount": 10
+              },
+              "sampleCount": 25,
+              "gain": 0.0009221212395392211
+            },
+            "sampleCount": 39,
+            "gain": 0.0026475548225999806
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10458.25,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10369.5,
+              "left": {
+                "isLeaf": true,
+                "value": 0.06148147585816932,
+                "sampleCount": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.05104747446245674,
+                "sampleCount": 12
+              },
+              "sampleCount": 30,
+              "gain": 0.0007838523729052701
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 207.9575,
+              "left": {
+                "isLeaf": true,
+                "value": 0.03206247719589002,
+                "sampleCount": 3
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.0419829836434036,
+                "sampleCount": 11
+              },
+              "sampleCount": 14,
+              "gain": 0.00023198162784144542
+            },
+            "sampleCount": 44,
+            "gain": 0.002906852792425642
+          },
+          "sampleCount": 83,
+          "gain": 0.016329337072811007
+        },
+        "sampleCount": 222,
+        "gain": 0.19156480079354515
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 189.46999999999997,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 163.5625,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10415,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10351,
+              "left": {
+                "isLeaf": true,
+                "value": -0.010568052940304296,
+                "sampleCount": 8
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.017081379761481885,
+                "sampleCount": 9
+              },
+              "sampleCount": 17,
+              "gain": 0.00017967568777187853
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.24712499999999998,
+              "left": {
+                "isLeaf": true,
+                "value": -0.03518279012299494,
+                "sampleCount": 48
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.025172463716094343,
+                "sampleCount": 29
+              },
+              "sampleCount": 77,
+              "gain": 0.0018115277351115119
+            },
+            "sampleCount": 94,
+            "gain": 0.004214341106849293
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.3175,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10326.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.007745926580419137,
+                "sampleCount": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.0159392276635791,
+                "sampleCount": 8
+              },
+              "sampleCount": 19,
+              "gain": 0.00031091874064522644
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10302.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0029824242544825618,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.008906774836566659,
+                "sampleCount": 12
+              },
+              "sampleCount": 22,
+              "gain": 0.0007710166637814853
+            },
+            "sampleCount": 41,
+            "gain": 0.002202563668782833
+          },
+          "sampleCount": 135,
+          "gain": 0.0177822425053985
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 214.94625,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10470.5,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10338.25,
+              "left": {
+                "isLeaf": true,
+                "value": 0.004371506692828601,
+                "sampleCount": 4
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.015182017806665424,
+                "sampleCount": 14
+              },
+              "sampleCount": 18,
+              "gain": 0.00036358669057632274
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.09405,
+              "left": {
+                "isLeaf": true,
+                "value": 0.02519259424693593,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.034397611691831045,
+                "sampleCount": 7
+              },
+              "sampleCount": 16,
+              "gain": 0.00033363361300824254
+            },
+            "sampleCount": 34,
+            "gain": 0.0022894062820309354
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10415.5,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 231.4925,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0473907577637857,
+                "sampleCount": 6
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.055837777756013576,
+                "sampleCount": 16
+              },
+              "sampleCount": 22,
+              "gain": 0.00031135482217787956
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10472.375,
+              "left": {
+                "isLeaf": true,
+                "value": 0.045207134510012334,
+                "sampleCount": 8
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.03530527588918854,
+                "sampleCount": 17
+              },
+              "sampleCount": 25,
+              "gain": 0.0005333746145584979
+            },
+            "sampleCount": 47,
+            "gain": 0.0026541461456519528
+          },
+          "sampleCount": 81,
+          "gain": 0.012337262198572585
+        },
+        "sampleCount": 216,
+        "gain": 0.15713842366869207
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 161.865,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.23349999999999999,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10488.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.03690852700958034,
+                "sampleCount": 19
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.029195119181091037,
+                "sampleCount": 17
+              },
+              "sampleCount": 36,
+              "gain": 0.0005338172579482738
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 155.12,
+              "left": {
+                "isLeaf": true,
+                "value": -0.023156469677404076,
+                "sampleCount": 43
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.01378054563449724,
+                "sampleCount": 13
+              },
+              "sampleCount": 56,
+              "gain": 0.0008775097317325429
+            },
+            "sampleCount": 92,
+            "gain": 0.0033077725423112676
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 177.51749999999998,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 171.73874999999998,
+              "left": {
+                "isLeaf": true,
+                "value": -0.012758387702848678,
+                "sampleCount": 20
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.006465242151816023,
+                "sampleCount": 8
+              },
+              "sampleCount": 28,
+              "gain": 0.00022630674815132638
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10349,
+              "left": {
+                "isLeaf": true,
+                "value": -0.00044435729876701285,
+                "sampleCount": 12
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.01016825372564395,
+                "sampleCount": 9
+              },
+              "sampleCount": 21,
+              "gain": 0.0005792272084565954
+            },
+            "sampleCount": 49,
+            "gain": 0.0027231797846510534
+          },
+          "sampleCount": 141,
+          "gain": 0.014482484411720373
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 213.615,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10468,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.0803,
+              "left": {
+                "isLeaf": true,
+                "value": 0.005724592394408763,
+                "sampleCount": 6
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.014193200960737395,
+                "sampleCount": 15
+              },
+              "sampleCount": 21,
+              "gain": 0.0003073599902129774
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 4,
+              "featureName": "feed_rate",
+              "threshold": 1550.35,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0227166884455583,
+                "sampleCount": 6
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.031131813770276226,
+                "sampleCount": 6
+              },
+              "sampleCount": 12,
+              "gain": 0.0002124430026921269
+            },
+            "sampleCount": 33,
+            "gain": 0.0017528682745282082
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10415.5,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 231.4925,
+              "left": {
+                "isLeaf": true,
+                "value": 0.04417334796830863,
+                "sampleCount": 6
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.05159632582419768,
+                "sampleCount": 16
+              },
+              "sampleCount": 22,
+              "gain": 0.00024043898290481157
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 217.35875,
+              "left": {
+                "isLeaf": true,
+                "value": 0.026445697836572322,
+                "sampleCount": 8
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.037908096675622054,
+                "sampleCount": 18
+              },
+              "sampleCount": 26,
+              "gain": 0.0007276795595747923
+            },
+            "sampleCount": 48,
+            "gain": 0.0027498486947444708
+          },
+          "sampleCount": 81,
+          "gain": 0.011321020512005993
+        },
+        "sampleCount": 222,
+        "gain": 0.12826692121796468
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 2,
+        "featureName": "acoustic_emission",
+        "threshold": 0.08365,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 160.02,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10395.375,
+            "left": {
+              "isLeaf": true,
+              "value": -0.010192803845416714,
+              "sampleCount": 12
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.208125,
+              "left": {
+                "isLeaf": true,
+                "value": -0.03208677727893468,
+                "sampleCount": 19
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.02380948327621019,
+                "sampleCount": 57
+              },
+              "sampleCount": 76,
+              "gain": 0.0009763187431074283
+            },
+            "sampleCount": 88,
+            "gain": 0.002549979857104561
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.3425,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10344,
+              "left": {
+                "isLeaf": true,
+                "value": -0.008011612350251517,
+                "sampleCount": 20
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.014975140379813063,
+                "sampleCount": 10
+              },
+              "sampleCount": 30,
+              "gain": 0.0003232714841232626
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10331.5,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0011223552124226585,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.011443709260309503,
+                "sampleCount": 4
+              },
+              "sampleCount": 14,
+              "gain": 0.000304372426805229
+            },
+            "sampleCount": 44,
+            "gain": 0.0019804732570328242
+          },
+          "sampleCount": 132,
+          "gain": 0.009493592105960073
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.46349999999999997,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10437.375,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 179.52875,
+              "left": {
+                "isLeaf": true,
+                "value": 0.00008057599686941974,
+                "sampleCount": 3
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.010479844529644684,
+                "sampleCount": 10
+              },
+              "sampleCount": 13,
+              "gain": 0.0002495648908079303
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 218.355,
+              "left": {
+                "isLeaf": true,
+                "value": 0.019615153306737756,
+                "sampleCount": 24
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.03282659787510758,
+                "sampleCount": 4
+              },
+              "sampleCount": 28,
+              "gain": 0.0005984306317135149
+            },
+            "sampleCount": 41,
+            "gain": 0.0015994978232174951
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10403.5,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 231.4925,
+              "left": {
+                "isLeaf": true,
+                "value": 0.04093052592254718,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.04796852877286056,
+                "sampleCount": 16
+              },
+              "sampleCount": 21,
+              "gain": 0.00018869898712769285
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.1003,
+              "left": {
+                "isLeaf": true,
+                "value": 0.028949562383507692,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.03615581461972064,
+                "sampleCount": 11
+              },
+              "sampleCount": 20,
+              "gain": 0.0002570538528950245
+            },
+            "sampleCount": 41,
+            "gain": 0.0018338571428591845
+          },
+          "sampleCount": 82,
+          "gain": 0.010396107315008497
+        },
+        "sampleCount": 214,
+        "gain": 0.10818989726775541
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 189.57999999999998,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 3,
+          "featureName": "spindle_speed",
+          "threshold": 10400.5,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 174.66,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10381.125,
+              "left": {
+                "isLeaf": true,
+                "value": -0.008299756906509297,
+                "sampleCount": 33
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.021103134867209914,
+                "sampleCount": 4
+              },
+              "sampleCount": 37,
+              "gain": 0.0005848188192162479
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10303.75,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0035962241397195973,
+                "sampleCount": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.005932254499480533,
+                "sampleCount": 10
+              },
+              "sampleCount": 21,
+              "gain": 0.000475576646168869
+            },
+            "sampleCount": 58,
+            "gain": 0.0015123600471269117
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.21475,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10457.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.03257699812741851,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.027773850140672823,
+                "sampleCount": 14
+              },
+              "sampleCount": 24,
+              "gain": 0.0001345763450650447
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.0738,
+              "left": {
+                "isLeaf": true,
+                "value": -0.02121587581381147,
+                "sampleCount": 50
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.0011182070150130632,
+                "sampleCount": 2
+              },
+              "sampleCount": 52,
+              "gain": 0.0009592524150092208
+            },
+            "sampleCount": 76,
+            "gain": 0.0014566158599745474
+          },
+          "sampleCount": 134,
+          "gain": 0.01006753688654908
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.45999999999999996,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 204.48250000000002,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10334.25,
+              "left": {
+                "isLeaf": true,
+                "value": 0.004293895637893442,
+                "sampleCount": 4
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.012029955221269269,
+                "sampleCount": 12
+              },
+              "sampleCount": 16,
+              "gain": 0.00017953985363262283
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.409625,
+              "left": {
+                "isLeaf": true,
+                "value": 0.012674456722397856,
+                "sampleCount": 3
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.02375640322866231,
+                "sampleCount": 15
+              },
+              "sampleCount": 18,
+              "gain": 0.00030702384591926727
+            },
+            "sampleCount": 34,
+            "gain": 0.001182139339044618
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10373.125,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10345.75,
+              "left": {
+                "isLeaf": true,
+                "value": 0.04650144714727812,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.04070914546496886,
+                "sampleCount": 7
+              },
+              "sampleCount": 17,
+              "gain": 0.00013815018320716377
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.09115000000000001,
+              "left": {
+                "isLeaf": true,
+                "value": 0.016338328131457136,
+                "sampleCount": 2
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.034004009450168154,
+                "sampleCount": 25
+              },
+              "sampleCount": 27,
+              "gain": 0.00057791906750788
+            },
+            "sampleCount": 44,
+            "gain": 0.001360704455121118
+          },
+          "sampleCount": 78,
+          "gain": 0.00826429343445021
+        },
+        "sampleCount": 212,
+        "gain": 0.09466353243616837
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 3,
+          "featureName": "spindle_speed",
+          "threshold": 10401,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.31575,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.06306250000000001,
+              "left": {
+                "isLeaf": true,
+                "value": -0.01569342775041777,
+                "sampleCount": 6
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.008022604314683235,
+                "sampleCount": 28
+              },
+              "sampleCount": 34,
+              "gain": 0.0002907463943121172
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10311.25,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0024525786409651438,
+                "sampleCount": 15
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.006035239054182707,
+                "sampleCount": 6
+              },
+              "sampleCount": 21,
+              "gain": 0.0003087559252545643
+            },
+            "sampleCount": 55,
+            "gain": 0.001134609562844138
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 2,
+            "featureName": "acoustic_emission",
+            "threshold": 0.0594625,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 135.51875,
+              "left": {
+                "isLeaf": true,
+                "value": -0.029461626782317767,
+                "sampleCount": 13
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.023905110579267416,
+                "sampleCount": 30
+              },
+              "sampleCount": 43,
+              "gain": 0.00028002791169201785
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.0737,
+              "left": {
+                "isLeaf": true,
+                "value": -0.01798525523253347,
+                "sampleCount": 36
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.005662099301754607,
+                "sampleCount": 3
+              },
+              "sampleCount": 39,
+              "gain": 0.0004205358611841885
+            },
+            "sampleCount": 82,
+            "gain": 0.0014942196419450416
+          },
+          "sampleCount": 137,
+          "gain": 0.008127711490406853
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 213.615,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10468,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10351.75,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0038525129863031765,
+                "sampleCount": 7
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.011677625377502537,
+                "sampleCount": 13
+              },
+              "sampleCount": 20,
+              "gain": 0.000278607346903803
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.485,
+              "left": {
+                "isLeaf": true,
+                "value": 0.018543135768706802,
+                "sampleCount": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.02699836712095939,
+                "sampleCount": 2
+              },
+              "sampleCount": 13,
+              "gain": 0.00012098466298788712
+            },
+            "sampleCount": 33,
+            "gain": 0.0009369557385711337
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10448.625,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10320,
+              "left": {
+                "isLeaf": true,
+                "value": 0.04392250017247884,
+                "sampleCount": 7
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.03546244146502297,
+                "sampleCount": 16
+              },
+              "sampleCount": 23,
+              "gain": 0.0003485274110157908
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.42700000000000005,
+              "left": {
+                "isLeaf": true,
+                "value": 0.01629103043629108,
+                "sampleCount": 3
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.027271174270399823,
+                "sampleCount": 20
+              },
+              "sampleCount": 23,
+              "gain": 0.0003145136311766513
+            },
+            "sampleCount": 46,
+            "gain": 0.0017111718875599691
+          },
+          "sampleCount": 79,
+          "gain": 0.006721749787894647
+        },
+        "sampleCount": 216,
+        "gain": 0.07753422786619052
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.36749999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 161.865,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.253625,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10472.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.026343087136843912,
+                "sampleCount": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.020120633853342854,
+                "sampleCount": 31
+              },
+              "sampleCount": 49,
+              "gain": 0.000440921634180959
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10475.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.010731916384980996,
+                "sampleCount": 26
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.020285953160500716,
+                "sampleCount": 12
+              },
+              "sampleCount": 38,
+              "gain": 0.0007494537114971257
+            },
+            "sampleCount": 87,
+            "gain": 0.001604134014164621
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 177.51749999999998,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10344.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.006315175957698208,
+                "sampleCount": 16
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.012179830352976335,
+                "sampleCount": 7
+              },
+              "sampleCount": 23,
+              "gain": 0.0001674846596399203
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.090775,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0013369294026942347,
+                "sampleCount": 14
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.010358344559228605,
+                "sampleCount": 3
+              },
+              "sampleCount": 17,
+              "gain": 0.00020107112470088334
+            },
+            "sampleCount": 40,
+            "gain": 0.0011890228221773068
+          },
+          "sampleCount": 127,
+          "gain": 0.006341091202797817
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 213.615,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10468,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10328.5,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0014367890397591575,
+                "sampleCount": 6
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.010315238149545915,
+                "sampleCount": 18
+              },
+              "sampleCount": 24,
+              "gain": 0.00035472086367782977
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.019675740131306484,
+              "sampleCount": 15
+            },
+            "sampleCount": 39,
+            "gain": 0.0012378373500581104
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10481.5,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10356.25,
+              "left": {
+                "isLeaf": true,
+                "value": 0.03789829421747888,
+                "sampleCount": 13
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.03156400101342348,
+                "sampleCount": 19
+              },
+              "sampleCount": 32,
+              "gain": 0.00030970149336096103
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.502,
+              "left": {
+                "isLeaf": true,
+                "value": 0.02073617954412251,
+                "sampleCount": 15
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.03148396613426311,
+                "sampleCount": 3
+              },
+              "sampleCount": 18,
+              "gain": 0.0002887872914680154
+            },
+            "sampleCount": 50,
+            "gain": 0.0015527596034605987
+          },
+          "sampleCount": 89,
+          "gain": 0.006639799593529151
+        },
+        "sampleCount": 216,
+        "gain": 0.06843420797770937
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.36749999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 3,
+          "featureName": "spindle_speed",
+          "threshold": 10400.5,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.312,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 4,
+              "featureName": "feed_rate",
+              "threshold": 1569.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0065814135738640625,
+                "sampleCount": 24
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.015609843718227781,
+                "sampleCount": 4
+              },
+              "sampleCount": 28,
+              "gain": 0.0002794716029885327
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 172.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0053535128403149335,
+                "sampleCount": 6
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.001962480101596006,
+                "sampleCount": 16
+              },
+              "sampleCount": 22,
+              "gain": 0.00023355819371385033
+            },
+            "sampleCount": 50,
+            "gain": 0.0007569468705366433
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.235125,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10458.875,
+              "left": {
+                "isLeaf": true,
+                "value": -0.026374619593744167,
+                "sampleCount": 13
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.020164951291565626,
+                "sampleCount": 25
+              },
+              "sampleCount": 38,
+              "gain": 0.0003297893062500334
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10477.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.011477291737630103,
+                "sampleCount": 22
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.018866757745598175,
+                "sampleCount": 23
+              },
+              "sampleCount": 45,
+              "gain": 0.00061399398197234
+            },
+            "sampleCount": 83,
+            "gain": 0.0010196911275199465
+          },
+          "sampleCount": 133,
+          "gain": 0.006161974106768245
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.4495,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 206.85875,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10436.375,
+              "left": {
+                "isLeaf": true,
+                "value": 0.004392688217014186,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.011650752892047247,
+                "sampleCount": 12
+              },
+              "sampleCount": 22,
+              "gain": 0.0002873427426925242
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.420625,
+              "left": {
+                "isLeaf": true,
+                "value": 0.011244674002406196,
+                "sampleCount": 4
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.020332414669530396,
+                "sampleCount": 8
+              },
+              "sampleCount": 12,
+              "gain": 0.00022023208115440796
+            },
+            "sampleCount": 34,
+            "gain": 0.0006221857453233249
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10468,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 231.19875000000002,
+              "left": {
+                "isLeaf": true,
+                "value": 0.02862285420500627,
+                "sampleCount": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.033290563164771914,
+                "sampleCount": 19
+              },
+              "sampleCount": 30,
+              "gain": 0.00015178629830043313
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.09013750000000001,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0170550797797905,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.02243213224375386,
+                "sampleCount": 14
+              },
+              "sampleCount": 19,
+              "gain": 0.00010652044863236902
+            },
+            "sampleCount": 49,
+            "gain": 0.0012976784981822299
+          },
+          "sampleCount": 83,
+          "gain": 0.0051209354145191725
+        },
+        "sampleCount": 216,
+        "gain": 0.059541089995000025
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 3,
+          "featureName": "spindle_speed",
+          "threshold": 10398.5,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.3085,
+            "left": {
+              "isLeaf": true,
+              "value": -0.007118784455468228,
+              "sampleCount": 28
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 167.11124999999998,
+              "left": {
+                "isLeaf": true,
+                "value": -0.004362348930822096,
+                "sampleCount": 7
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.000917220648379873,
+                "sampleCount": 14
+              },
+              "sampleCount": 21,
+              "gain": 0.00013007798972762915
+            },
+            "sampleCount": 49,
+            "gain": 0.0004726804915943473
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 167.4,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 138.95749999999998,
+              "left": {
+                "isLeaf": true,
+                "value": -0.022519962610350632,
+                "sampleCount": 23
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.015294931210949804,
+                "sampleCount": 54
+              },
+              "sampleCount": 77,
+              "gain": 0.0008419966204302768
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.008225241924877266,
+              "sampleCount": 2
+            },
+            "sampleCount": 79,
+            "gain": 0.0012853640409592366
+          },
+          "sampleCount": 128,
+          "gain": 0.004630534669990146
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 213.615,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.44975,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10343.75,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0019653919509879047,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.009883395328734905,
+                "sampleCount": 18
+              },
+              "sampleCount": 23,
+              "gain": 0.0002453273901783114
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.0179274586450342,
+              "sampleCount": 10
+            },
+            "sampleCount": 33,
+            "gain": 0.0006646471693960528
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10481.5,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 228.0725,
+              "left": {
+                "isLeaf": true,
+                "value": 0.025953602699399673,
+                "sampleCount": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.03061720541726599,
+                "sampleCount": 23
+              },
+              "sampleCount": 34,
+              "gain": 0.00016183956318978777
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.487,
+              "left": {
+                "isLeaf": true,
+                "value": 0.01744466712804866,
+                "sampleCount": 13
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.02599138759899946,
+                "sampleCount": 4
+              },
+              "sampleCount": 17,
+              "gain": 0.00022343614129680068
+            },
+            "sampleCount": 51,
+            "gain": 0.0010559861271822735
+          },
+          "sampleCount": 84,
+          "gain": 0.004370566539562032
+        },
+        "sampleCount": 212,
+        "gain": 0.05243710858083466
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 189.46999999999997,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.2735,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10377.875,
+            "left": {
+              "isLeaf": true,
+              "value": -0.007016524547508859,
+              "sampleCount": 10
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.0548,
+              "left": {
+                "isLeaf": true,
+                "value": -0.021436425918648857,
+                "sampleCount": 17
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.015219645315040033,
+                "sampleCount": 52
+              },
+              "sampleCount": 69,
+              "gain": 0.0004951471186795892
+            },
+            "sampleCount": 79,
+            "gain": 0.0008277044585717438
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 176.8575,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10357.25,
+              "left": {
+                "isLeaf": true,
+                "value": -0.004050507278454148,
+                "sampleCount": 23
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.009721520023527247,
+                "sampleCount": 16
+              },
+              "sampleCount": 39,
+              "gain": 0.00030346209959383644
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.0891,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0001707446184984794,
+                "sampleCount": 13
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.01076879762669384,
+                "sampleCount": 4
+              },
+              "sampleCount": 17,
+              "gain": 0.0003435631666679396
+            },
+            "sampleCount": 56,
+            "gain": 0.0009678423603274792
+          },
+          "sampleCount": 135,
+          "gain": 0.004630262301545965
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.10451250000000001,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.43574999999999997,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 5,
+              "featureName": "depth_of_cut",
+              "threshold": 0.76275,
+              "left": {
+                "isLeaf": true,
+                "value": 0.006339123989315759,
+                "sampleCount": 15
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.013521025738348215,
+                "sampleCount": 6
+              },
+              "sampleCount": 21,
+              "gain": 0.00022105591171180903
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 221.565,
+              "left": {
+                "isLeaf": true,
+                "value": 0.01524709984329188,
+                "sampleCount": 14
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.023062977104040816,
+                "sampleCount": 5
+              },
+              "sampleCount": 19,
+              "gain": 0.00022506082183455046
+            },
+            "sampleCount": 40,
+            "gain": 0.0007923965298450727
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10370.125,
+            "left": {
+              "isLeaf": true,
+              "value": 0.028617699147292376,
+              "sampleCount": 17
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.02234713768194088,
+              "sampleCount": 16
+            },
+            "sampleCount": 33,
+            "gain": 0.00032409163565709975
+          },
+          "sampleCount": 73,
+          "gain": 0.003033714223082776
+        },
+        "sampleCount": 208,
+        "gain": 0.04003435153775699
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 151.97375,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 137.105,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10446.25,
+              "left": {
+                "isLeaf": true,
+                "value": -0.02335093858498407,
+                "sampleCount": 7
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.018145712402610363,
+                "sampleCount": 10
+              },
+              "sampleCount": 17,
+              "gain": 0.00011156509251040075
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.054224999999999995,
+              "left": {
+                "isLeaf": true,
+                "value": -0.01919103125681779,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.011870042239734377,
+                "sampleCount": 43
+              },
+              "sampleCount": 52,
+              "gain": 0.0003988844737087521
+            },
+            "sampleCount": 69,
+            "gain": 0.0006553096568520486
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 176.905,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10362.25,
+              "left": {
+                "isLeaf": true,
+                "value": -0.004062999784548968,
+                "sampleCount": 31
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.01028859822473273,
+                "sampleCount": 21
+              },
+              "sampleCount": 52,
+              "gain": 0.00048522129684443183
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10349,
+              "left": {
+                "isLeaf": true,
+                "value": -0.00024136517295320764,
+                "sampleCount": 12
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.006618476058461876,
+                "sampleCount": 8
+              },
+              "sampleCount": 20,
+              "gain": 0.0002258756242570677
+            },
+            "sampleCount": 72,
+            "gain": 0.0011908282025971002
+          },
+          "sampleCount": 141,
+          "gain": 0.004143383508746289
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.10451250000000001,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 203.76999999999998,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10408.875,
+              "left": {
+                "isLeaf": true,
+                "value": 0.003991157985631045,
+                "sampleCount": 11
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.010406444572467073,
+                "sampleCount": 6
+              },
+              "sampleCount": 17,
+              "gain": 0.0001597817371424542
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.41425,
+              "left": {
+                "isLeaf": true,
+                "value": 0.008246572699620808,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.016954455704326042,
+                "sampleCount": 25
+              },
+              "sampleCount": 30,
+              "gain": 0.00031594677676514233
+            },
+            "sampleCount": 47,
+            "gain": 0.0009279955566848016
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10370.125,
+            "left": {
+              "isLeaf": true,
+              "value": 0.027268701367166127,
+              "sampleCount": 17
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.020646684177324803,
+              "sampleCount": 17
+            },
+            "sampleCount": 34,
+            "gain": 0.00037273444913171066
+          },
+          "sampleCount": 81,
+          "gain": 0.0027467429840446725
+        },
+        "sampleCount": 222,
+        "gain": 0.036053865262843134
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.2615,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 140.8025,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10454.125,
+              "left": {
+                "isLeaf": true,
+                "value": -0.020674644641502277,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.015545739648211302,
+                "sampleCount": 17
+              },
+              "sampleCount": 26,
+              "gain": 0.0001547987293777451
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.0516,
+              "left": {
+                "isLeaf": true,
+                "value": -0.01911045032055897,
+                "sampleCount": 7
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.010581508154779935,
+                "sampleCount": 37
+              },
+              "sampleCount": 44,
+              "gain": 0.00042819089334103846
+            },
+            "sampleCount": 70,
+            "gain": 0.0004735169389955291
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 176.57125,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10325.25,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0031361586087258766,
+                "sampleCount": 21
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.008656803119679903,
+                "sampleCount": 29
+              },
+              "sampleCount": 50,
+              "gain": 0.0003712161426428606
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10370.625,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0007731404775455054,
+                "sampleCount": 17
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.009038464670716789,
+                "sampleCount": 3
+              },
+              "sampleCount": 20,
+              "gain": 0.00017420473924646744
+            },
+            "sampleCount": 70,
+            "gain": 0.0009962913675129548
+          },
+          "sampleCount": 140,
+          "gain": 0.003489912185754512
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.45237499999999997,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 206.8275,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.0874,
+              "left": {
+                "isLeaf": true,
+                "value": 0.003150990468925894,
+                "sampleCount": 8
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.008073894356698459,
+                "sampleCount": 12
+              },
+              "sampleCount": 20,
+              "gain": 0.00011632791690358203
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 4,
+              "featureName": "feed_rate",
+              "threshold": 1555,
+              "left": {
+                "isLeaf": true,
+                "value": 0.018978202595973707,
+                "sampleCount": 4
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.009889098984306566,
+                "sampleCount": 9
+              },
+              "sampleCount": 13,
+              "gain": 0.00022877115082233418
+            },
+            "sampleCount": 33,
+            "gain": 0.0003412282387935761
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10464.25,
+            "left": {
+              "isLeaf": true,
+              "value": 0.022889362191856322,
+              "sampleCount": 30
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.09013750000000001,
+              "left": {
+                "isLeaf": true,
+                "value": 0.010624155056536105,
+                "sampleCount": 4
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.01720895237810608,
+                "sampleCount": 13
+              },
+              "sampleCount": 17,
+              "gain": 0.0001326292294023569
+            },
+            "sampleCount": 47,
+            "gain": 0.0005671810968286158
+          },
+          "sampleCount": 80,
+          "gain": 0.0025984849474620588
+        },
+        "sampleCount": 220,
+        "gain": 0.030417879141335785
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 2,
+        "featureName": "acoustic_emission",
+        "threshold": 0.0827,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 3,
+          "featureName": "spindle_speed",
+          "threshold": 10362.625,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.3065,
+            "left": {
+              "isLeaf": true,
+              "value": -0.004687295575584301,
+              "sampleCount": 16
+            },
+            "right": {
+              "isLeaf": true,
+              "value": -0.00011999402495213238,
+              "sampleCount": 24
+            },
+            "sampleCount": 40,
+            "gain": 0.00020025833716230722
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.244125,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10487.625,
+              "left": {
+                "isLeaf": true,
+                "value": -0.016586543123928644,
+                "sampleCount": 24
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.013113077347335467,
+                "sampleCount": 21
+              },
+              "sampleCount": 45,
+              "gain": 0.00013512760241303728
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10472.75,
+              "left": {
+                "isLeaf": true,
+                "value": -0.007072312123899166,
+                "sampleCount": 24
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.012254039941149618,
+                "sampleCount": 17
+              },
+              "sampleCount": 41,
+              "gain": 0.00026719326083422855
+            },
+            "sampleCount": 86,
+            "gain": 0.0007080135181658353
+          },
+          "sampleCount": 126,
+          "gain": 0.002885130428903278
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 222.63125,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.400125,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10377.5,
+              "left": {
+                "isLeaf": true,
+                "value": 0.000689933696453923,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.00680902879628574,
+                "sampleCount": 11
+              },
+              "sampleCount": 20,
+              "gain": 0.00018534445796188954
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.5025000000000001,
+              "left": {
+                "isLeaf": true,
+                "value": 0.011196759420327688,
+                "sampleCount": 31
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.020916516913324735,
+                "sampleCount": 3
+              },
+              "sampleCount": 34,
+              "gain": 0.0002584133168296623
+            },
+            "sampleCount": 54,
+            "gain": 0.0008057141989378576
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10340.75,
+            "left": {
+              "isLeaf": true,
+              "value": 0.024929737075132453,
+              "sampleCount": 10
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10475,
+              "left": {
+                "isLeaf": true,
+                "value": 0.019567604559438043,
+                "sampleCount": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.012967100460221004,
+                "sampleCount": 6
+              },
+              "sampleCount": 24,
+              "gain": 0.00019604994463701423
+            },
+            "sampleCount": 34,
+            "gain": 0.0003470948459209165
+          },
+          "sampleCount": 88,
+          "gain": 0.002473397405792551
+        },
+        "sampleCount": 214,
+        "gain": 0.025678225142912788
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 151.97375,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 136.81,
+            "left": {
+              "isLeaf": true,
+              "value": -0.016250655297888817,
+              "sampleCount": 18
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.053599999999999995,
+              "left": {
+                "isLeaf": true,
+                "value": -0.016168460080894065,
+                "sampleCount": 7
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.009122722888273213,
+                "sampleCount": 42
+              },
+              "sampleCount": 49,
+              "gain": 0.0002978544755248846
+            },
+            "sampleCount": 67,
+            "gain": 0.0004932817992980682
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.31225,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10505.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.004823136084073195,
+                "sampleCount": 38
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.01358843472162224,
+                "sampleCount": 3
+              },
+              "sampleCount": 41,
+              "gain": 0.00021362615764433613
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 189.88,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0011871407974920895,
+                "sampleCount": 22
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.0052478315213614,
+                "sampleCount": 6
+              },
+              "sampleCount": 28,
+              "gain": 0.00019521323836650732
+            },
+            "sampleCount": 69,
+            "gain": 0.0005322979430077977
+          },
+          "sampleCount": 136,
+          "gain": 0.002516795013308125
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.45237499999999997,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10481.5,
+            "left": {
+              "isLeaf": true,
+              "value": 0.0044113962950729614,
+              "sampleCount": 20
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.41725,
+              "left": {
+                "isLeaf": true,
+                "value": 0.006619771530602253,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.013458168546454352,
+                "sampleCount": 10
+              },
+              "sampleCount": 15,
+              "gain": 0.0001558789124880496
+            },
+            "sampleCount": 35,
+            "gain": 0.0003925409000571935
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10373.125,
+            "left": {
+              "isLeaf": true,
+              "value": 0.020902792597767714,
+              "sampleCount": 17
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10487.5,
+              "left": {
+                "isLeaf": true,
+                "value": 0.01692950910531011,
+                "sampleCount": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.012747683215999006,
+                "sampleCount": 12
+              },
+              "sampleCount": 30,
+              "gain": 0.0001259112079332903
+            },
+            "sampleCount": 47,
+            "gain": 0.00034590448746107233
+          },
+          "sampleCount": 82,
+          "gain": 0.002000998668192644
+        },
+        "sampleCount": 218,
+        "gain": 0.02138167782735928
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 189.46999999999997,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 155.31,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.244875,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10488.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.014782251935569462,
+                "sampleCount": 20
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.010150884907851038,
+                "sampleCount": 19
+              },
+              "sampleCount": 39,
+              "gain": 0.00020899571813503073
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 139.95749999999998,
+              "left": {
+                "isLeaf": true,
+                "value": -0.013024677333852772,
+                "sampleCount": 6
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.00724090741481141,
+                "sampleCount": 30
+              },
+              "sampleCount": 36,
+              "gain": 0.0001672599723820386
+            },
+            "sampleCount": 75,
+            "gain": 0.0003495341591673749
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 176.27875,
+            "left": {
+              "isLeaf": true,
+              "value": -0.004129121015030074,
+              "sampleCount": 36
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.0953,
+              "left": {
+                "isLeaf": true,
+                "value": 0.0012250838288969778,
+                "sampleCount": 19
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.009442254128821458,
+                "sampleCount": 2
+              },
+              "sampleCount": 21,
+              "gain": 0.00012218246352583412
+            },
+            "sampleCount": 57,
+            "gain": 0.0004994934718537101
+          },
+          "sampleCount": 132,
+          "gain": 0.002386185881141032
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.09834999999999999,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 199.445,
+            "left": {
+              "isLeaf": true,
+              "value": 0.003474818253196079,
+              "sampleCount": 13
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 217.31375,
+              "left": {
+                "isLeaf": true,
+                "value": 0.008071663218767889,
+                "sampleCount": 23
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.014582492379702876,
+                "sampleCount": 4
+              },
+              "sampleCount": 27,
+              "gain": 0.00014444305427352172
+            },
+            "sampleCount": 40,
+            "gain": 0.0002714046619023087
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10493.75,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10308.375,
+              "left": {
+                "isLeaf": true,
+                "value": 0.022155551744382003,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.016204191106244444,
+                "sampleCount": 29
+              },
+              "sampleCount": 34,
+              "gain": 0.00015105031028088552
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 5,
+              "featureName": "depth_of_cut",
+              "threshold": 0.732,
+              "left": {
+                "isLeaf": true,
+                "value": 0.01798555369576041,
+                "sampleCount": 2
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.007301644514227402,
+                "sampleCount": 6
+              },
+              "sampleCount": 8,
+              "gain": 0.00017121887309886792
+            },
+            "sampleCount": 42,
+            "gain": 0.00032708758471629914
+          },
+          "sampleCount": 82,
+          "gain": 0.0014791815632231422
+        },
+        "sampleCount": 214,
+        "gain": 0.016986951426260666
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.36749999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.06268750000000001,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.19325,
+            "left": {
+              "isLeaf": true,
+              "value": -0.014882578243487423,
+              "sampleCount": 13
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 132.8625,
+              "left": {
+                "isLeaf": true,
+                "value": -0.013455644193348024,
+                "sampleCount": 9
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.00794320377604623,
+                "sampleCount": 36
+              },
+              "sampleCount": 45,
+              "gain": 0.00021878639535097733
+            },
+            "sampleCount": 58,
+            "gain": 0.00034362943027255177
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 177.78625,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10364.125,
+              "left": {
+                "isLeaf": true,
+                "value": -0.002765047488451271,
+                "sampleCount": 31
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.006819274678784653,
+                "sampleCount": 29
+              },
+              "sampleCount": 60,
+              "gain": 0.0002462774256940636
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10303.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0014440654811913609,
+                "sampleCount": 7
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.004560471937979534,
+                "sampleCount": 9
+              },
+              "sampleCount": 16,
+              "gain": 0.000141964474121755
+            },
+            "sampleCount": 76,
+            "gain": 0.0005599578353357598
+          },
+          "sampleCount": 134,
+          "gain": 0.001626220961048623
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 213.615,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10468,
+            "left": {
+              "isLeaf": true,
+              "value": 0.004325801022855138,
+              "sampleCount": 22
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.09834999999999999,
+              "left": {
+                "isLeaf": true,
+                "value": 0.007753110469371727,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.013550009170334715,
+                "sampleCount": 5
+              },
+              "sampleCount": 15,
+              "gain": 0.00011201344849742128
+            },
+            "sampleCount": 37,
+            "gain": 0.0002561995918005373
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.518625,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 217.93875,
+              "left": {
+                "isLeaf": true,
+                "value": 0.008418067728642658,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.0134604986390142,
+                "sampleCount": 20
+              },
+              "sampleCount": 25,
+              "gain": 0.00010170443794348143
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.01821583976432323,
+              "sampleCount": 17
+            },
+            "sampleCount": 42,
+            "gain": 0.00033617201720163273
+          },
+          "sampleCount": 79,
+          "gain": 0.0013506818293799773
+        },
+        "sampleCount": 213,
+        "gain": 0.01482340450228007
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 2,
+        "featureName": "acoustic_emission",
+        "threshold": 0.0827,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.2745,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 2,
+            "featureName": "acoustic_emission",
+            "threshold": 0.059899999999999995,
+            "left": {
+              "isLeaf": true,
+              "value": -0.011056097677136827,
+              "sampleCount": 43
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 135.3275,
+              "left": {
+                "isLeaf": true,
+                "value": -0.015433970948361936,
+                "sampleCount": 3
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.005672294187797381,
+                "sampleCount": 32
+              },
+              "sampleCount": 35,
+              "gain": 0.0002613677710018175
+            },
+            "sampleCount": 78,
+            "gain": 0.0003989410076675657
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.30525,
+            "left": {
+              "isLeaf": true,
+              "value": -0.003739668699310843,
+              "sampleCount": 28
+            },
+            "right": {
+              "isLeaf": true,
+              "value": -0.00026239264084806924,
+              "sampleCount": 24
+            },
+            "sampleCount": 52,
+            "gain": 0.0001562587227827238
+          },
+          "sampleCount": 130,
+          "gain": 0.0014772477962229965
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.45899999999999996,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 2,
+            "featureName": "acoustic_emission",
+            "threshold": 0.09625,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 191.0925,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0012012041814088595,
+                "sampleCount": 7
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.004795206856189243,
+                "sampleCount": 20
+              },
+              "sampleCount": 27,
+              "gain": 0.00018644342023911
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.00944907736287507,
+              "sampleCount": 13
+            },
+            "sampleCount": 40,
+            "gain": 0.0003382360385392623
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10403.5,
+            "left": {
+              "isLeaf": true,
+              "value": 0.015376610529531671,
+              "sampleCount": 22
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.51375,
+              "left": {
+                "isLeaf": true,
+                "value": 0.009988162351945686,
+                "sampleCount": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.016310643785019174,
+                "sampleCount": 3
+              },
+              "sampleCount": 21,
+              "gain": 0.00010278969806972306
+            },
+            "sampleCount": 43,
+            "gain": 0.0002161445174070556
+          },
+          "sampleCount": 83,
+          "gain": 0.0013024350956362275
+        },
+        "sampleCount": 213,
+        "gain": 0.012373625434925734
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 2,
+        "featureName": "acoustic_emission",
+        "threshold": 0.08365,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 150.59,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.26175,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10472.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.01242170030077567,
+                "sampleCount": 16
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.008714637722776163,
+                "sampleCount": 36
+              },
+              "sampleCount": 52,
+              "gain": 0.00015222254352595583
+            },
+            "right": {
+              "isLeaf": true,
+              "value": -0.005114045752141175,
+              "sampleCount": 13
+            },
+            "sampleCount": 65,
+            "gain": 0.00023378398958258753
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.31,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10505.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0035695852448274622,
+                "sampleCount": 43
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.009688014110694568,
+                "sampleCount": 4
+              },
+              "sampleCount": 47,
+              "gain": 0.00013699679887889892
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.00016066981340603358,
+              "sampleCount": 30
+            },
+            "sampleCount": 77,
+            "gain": 0.00033090624219971857
+          },
+          "sampleCount": 142,
+          "gain": 0.0014767939396558034
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.093975,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10415.5,
+            "left": {
+              "isLeaf": true,
+              "value": 0.001558617525348056,
+              "sampleCount": 12
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10492,
+              "left": {
+                "isLeaf": true,
+                "value": 0.004156398171543998,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.00872400062921171,
+                "sampleCount": 10
+              },
+              "sampleCount": 20,
+              "gain": 0.00010431496105646064
+            },
+            "sampleCount": 32,
+            "gain": 0.00017872381201964596
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10343.75,
+            "left": {
+              "isLeaf": true,
+              "value": 0.016773248850915325,
+              "sampleCount": 11
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 1,
+              "featureName": "vibration",
+              "threshold": 0.51075,
+              "left": {
+                "isLeaf": true,
+                "value": 0.009407721547411853,
+                "sampleCount": 29
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.01301323704324008,
+                "sampleCount": 17
+              },
+              "sampleCount": 46,
+              "gain": 0.0001393233217694375
+            },
+            "sampleCount": 57,
+            "gain": 0.00032310978700523705
+          },
+          "sampleCount": 89,
+          "gain": 0.0010906088018393782
+        },
+        "sampleCount": 231,
+        "gain": 0.011787950571626337
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37649999999999995,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 167.4,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 2,
+            "featureName": "acoustic_emission",
+            "threshold": 0.058225,
+            "left": {
+              "isLeaf": true,
+              "value": -0.009486248087916545,
+              "sampleCount": 33
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 134.26,
+              "left": {
+                "isLeaf": true,
+                "value": -0.010044016488023604,
+                "sampleCount": 5
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.004512646709514457,
+                "sampleCount": 56
+              },
+              "sampleCount": 61,
+              "gain": 0.0001404408927122825
+            },
+            "sampleCount": 94,
+            "gain": 0.0004375555774787036
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.3415,
+            "left": {
+              "isLeaf": true,
+              "value": -0.0025827083287410565,
+              "sampleCount": 21
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10315.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0006171978060101323,
+                "sampleCount": 12
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.0040578693249989865,
+                "sampleCount": 10
+              },
+              "sampleCount": 22,
+              "gain": 0.00011921592370604635
+            },
+            "sampleCount": 43,
+            "gain": 0.0001797773720922859
+          },
+          "sampleCount": 137,
+          "gain": 0.0010845699442959883
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.10139999999999999,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10487.5,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 0,
+              "featureName": "cutting_force",
+              "threshold": 222.035,
+              "left": {
+                "isLeaf": true,
+                "value": 0.003265390420020798,
+                "sampleCount": 20
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.011118744198951813,
+                "sampleCount": 2
+              },
+              "sampleCount": 22,
+              "gain": 0.00011213666468554558
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.007919305631471021,
+              "sampleCount": 19
+            },
+            "sampleCount": 41,
+            "gain": 0.00015826290304398925
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10340.75,
+            "left": {
+              "isLeaf": true,
+              "value": 0.015532738275582639,
+              "sampleCount": 9
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.01129670884318946,
+              "sampleCount": 26
+            },
+            "sampleCount": 35,
+            "gain": 0.00011996809178262005
+          },
+          "sampleCount": 76,
+          "gain": 0.000817703264414227
+        },
+        "sampleCount": 213,
+        "gain": 0.008890028501306263
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 189.46999999999997,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.2735,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.18275,
+            "left": {
+              "isLeaf": true,
+              "value": -0.012271769798842463,
+              "sampleCount": 9
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10376.375,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0024436318665865377,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.007239137538693707,
+                "sampleCount": 52
+              },
+              "sampleCount": 62,
+              "gain": 0.00019287701320371453
+            },
+            "sampleCount": 71,
+            "gain": 0.0002649384617548359
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.34900000000000003,
+            "left": {
+              "isLeaf": true,
+              "value": -0.0020940511627124394,
+              "sampleCount": 45
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.0021795477132963963,
+              "sampleCount": 15
+            },
+            "sampleCount": 60,
+            "gain": 0.00020546603272151946
+          },
+          "sampleCount": 131,
+          "gain": 0.0012403754674303472
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 206.60750000000002,
+          "left": {
+            "isLeaf": true,
+            "value": 0.002949504990414406,
+            "sampleCount": 22
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10415,
+            "left": {
+              "isLeaf": true,
+              "value": 0.01269659041591874,
+              "sampleCount": 24
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.008344128843120224,
+              "sampleCount": 30
+            },
+            "sampleCount": 54,
+            "gain": 0.00025258562323583604
+          },
+          "sampleCount": 76,
+          "gain": 0.000839650134382499
+        },
+        "sampleCount": 207,
+        "gain": 0.007551138872122959
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 2,
+        "featureName": "acoustic_emission",
+        "threshold": 0.08365,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 157.33,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 135.32375,
+            "left": {
+              "isLeaf": true,
+              "value": -0.009430101718293468,
+              "sampleCount": 17
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10379.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0013705754738723866,
+                "sampleCount": 7
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.006086908495722812,
+                "sampleCount": 59
+              },
+              "sampleCount": 66,
+              "gain": 0.00013919224594617597
+            },
+            "sampleCount": 83,
+            "gain": 0.00019968630356608083
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 174.86,
+            "left": {
+              "isLeaf": true,
+              "value": -0.002312064573568918,
+              "sampleCount": 28
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10304.75,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0009630471045527894,
+                "sampleCount": 12
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.003837754905758349,
+                "sampleCount": 8
+              },
+              "sampleCount": 20,
+              "gain": 0.00011062895972259584
+            },
+            "sampleCount": 48,
+            "gain": 0.0001247000153492548
+          },
+          "sampleCount": 131,
+          "gain": 0.0008947388576973194
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 207.04625,
+          "left": {
+            "isLeaf": true,
+            "value": 0.003261418964211005,
+            "sampleCount": 25
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 232.095,
+            "left": {
+              "isLeaf": true,
+              "value": 0.008500004457918929,
+              "sampleCount": 37
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.01159947458261,
+              "sampleCount": 19
+            },
+            "sampleCount": 56,
+            "gain": 0.00012059858362246934
+          },
+          "sampleCount": 81,
+          "gain": 0.0006838655740318334
+        },
+        "sampleCount": 212,
+        "gain": 0.007203446834339393
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 172.815,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.239625,
+          "left": {
+            "isLeaf": true,
+            "value": -0.007653718583139632,
+            "sampleCount": 38
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 144.3225,
+            "left": {
+              "isLeaf": true,
+              "value": -0.006918580360442937,
+              "sampleCount": 12
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10334.75,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0001659361545809073,
+                "sampleCount": 16
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.0032987516442359167,
+                "sampleCount": 39
+              },
+              "sampleCount": 55,
+              "gain": 0.00011135033681357743
+            },
+            "sampleCount": 67,
+            "gain": 0.0002022526855476204
+          },
+          "sampleCount": 105,
+          "gain": 0.0004811943734112324
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.0948,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10511.375,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10318.25,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0006423850408329751,
+                "sampleCount": 18
+              },
+              "right": {
+                "isLeaf": true,
+                "value": 0.002843196540008701,
+                "sampleCount": 32
+              },
+              "sampleCount": 50,
+              "gain": 0.00013995969358121584
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.008481720103256069,
+              "sampleCount": 5
+            },
+            "sampleCount": 55,
+            "gain": 0.00021599108598284607
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10433.25,
+            "left": {
+              "isLeaf": true,
+              "value": 0.009820673691515812,
+              "sampleCount": 26
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.006755560076631434,
+              "sampleCount": 25
+            },
+            "sampleCount": 51,
+            "gain": 0.00011973919523327887
+          },
+          "sampleCount": 106,
+          "gain": 0.0009856661751505482
+        },
+        "sampleCount": 211,
+        "gain": 0.005235505018598857
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.2615,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.1935,
+            "left": {
+              "isLeaf": true,
+              "value": -0.009310613732995627,
+              "sampleCount": 12
+            },
+            "right": {
+              "isLeaf": false,
+              "featureIndex": 2,
+              "featureName": "acoustic_emission",
+              "threshold": 0.055249999999999994,
+              "left": {
+                "isLeaf": true,
+                "value": -0.008381815450182083,
+                "sampleCount": 10
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.004242120063053058,
+                "sampleCount": 45
+              },
+              "sampleCount": 55,
+              "gain": 0.00014021245553086934
+            },
+            "sampleCount": 67,
+            "gain": 0.000183483129075557
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.34299999999999997,
+            "left": {
+              "isLeaf": true,
+              "value": -0.002489770023787747,
+              "sampleCount": 48
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.0011535532094987524,
+              "sampleCount": 18
+            },
+            "sampleCount": 66,
+            "gain": 0.00017376616383977693
+          },
+          "sampleCount": 133,
+          "gain": 0.0006066749879384704
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.0921875,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10415,
+            "left": {
+              "isLeaf": true,
+              "value": 0.0005475919683924788,
+              "sampleCount": 10
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.005043285036541211,
+              "sampleCount": 14
+            },
+            "sampleCount": 24,
+            "gain": 0.00011789899428416988
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.51075,
+            "left": {
+              "isLeaf": true,
+              "value": 0.006354344771282366,
+              "sampleCount": 35
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.009649448783757097,
+              "sampleCount": 27
+            },
+            "sampleCount": 62,
+            "gain": 0.00016549252222759075
+          },
+          "sampleCount": 86,
+          "gain": 0.00036918463870152726
+        },
+        "sampleCount": 219,
+        "gain": 0.005378821562374718
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 151.97375,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 2,
+            "featureName": "acoustic_emission",
+            "threshold": 0.0649875,
+            "left": {
+              "isLeaf": true,
+              "value": -0.006304399265833808,
+              "sampleCount": 51
+            },
+            "right": {
+              "isLeaf": true,
+              "value": -0.0018302673962686741,
+              "sampleCount": 13
+            },
+            "sampleCount": 64,
+            "gain": 0.00020737247685764554
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 183.03625,
+            "left": {
+              "isLeaf": false,
+              "featureIndex": 3,
+              "featureName": "spindle_speed",
+              "threshold": 10469.5,
+              "left": {
+                "isLeaf": true,
+                "value": -0.0017934046563307003,
+                "sampleCount": 50
+              },
+              "right": {
+                "isLeaf": true,
+                "value": -0.007767946793384268,
+                "sampleCount": 3
+              },
+              "sampleCount": 53,
+              "gain": 0.00010102402003989245
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.0012960512625340532,
+              "sampleCount": 17
+            },
+            "sampleCount": 70,
+            "gain": 0.00015122254216258914
+          },
+          "sampleCount": 134,
+          "gain": 0.0005610280134909682
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.506625,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.41975,
+            "left": {
+              "isLeaf": true,
+              "value": 0.0021553868607023124,
+              "sampleCount": 21
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.005486513049002274,
+              "sampleCount": 35
+            },
+            "sampleCount": 56,
+            "gain": 0.00014564027208120917
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.008893982434486225,
+            "sampleCount": 25
+          },
+          "sampleCount": 81,
+          "gain": 0.0003747905774140667
+        },
+        "sampleCount": 215,
+        "gain": 0.0040260359474451005
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37349999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 3,
+          "featureName": "spindle_speed",
+          "threshold": 10400.5,
+          "left": {
+            "isLeaf": true,
+            "value": -0.0007177414794029499,
+            "sampleCount": 62
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 5,
+            "featureName": "depth_of_cut",
+            "threshold": 0.732,
+            "left": {
+              "isLeaf": true,
+              "value": -0.007079547252028765,
+              "sampleCount": 15
+            },
+            "right": {
+              "isLeaf": true,
+              "value": -0.003844343486076719,
+              "sampleCount": 61
+            },
+            "sampleCount": 76,
+            "gain": 0.00012601167391599623
+          },
+          "sampleCount": 138,
+          "gain": 0.00048404521526516356
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.45425,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.42212500000000003,
+            "left": {
+              "isLeaf": true,
+              "value": 0.0018145730997460266,
+              "sampleCount": 17
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.005321479116884893,
+              "sampleCount": 16
+            },
+            "sampleCount": 33,
+            "gain": 0.00010136854633782362
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.007270728687470698,
+            "sampleCount": 48
+          },
+          "sampleCount": 81,
+          "gain": 0.00027585683581264836
+        },
+        "sampleCount": 219,
+        "gain": 0.0037154188981883725
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.234375,
+          "left": {
+            "isLeaf": true,
+            "value": -0.005982710115351844,
+            "sampleCount": 34
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 0,
+            "featureName": "cutting_force",
+            "threshold": 176.57125,
+            "left": {
+              "isLeaf": true,
+              "value": -0.002270677067245979,
+              "sampleCount": 75
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.0011476948884448026,
+              "sampleCount": 19
+            },
+            "sampleCount": 94,
+            "gain": 0.00017714367265022246
+          },
+          "sampleCount": 128,
+          "gain": 0.00048405012779465396
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.1042,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 2,
+            "featureName": "acoustic_emission",
+            "threshold": 0.091825,
+            "left": {
+              "isLeaf": true,
+              "value": 0.0014940194133649363,
+              "sampleCount": 23
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.004444528558161992,
+              "sampleCount": 27
+            },
+            "sampleCount": 50,
+            "gain": 0.00010812236233205563
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.006974738139089162,
+            "sampleCount": 33
+          },
+          "sampleCount": 83,
+          "gain": 0.0003004236347233522
+        },
+        "sampleCount": 211,
+        "gain": 0.002743938493571552
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 2,
+        "featureName": "acoustic_emission",
+        "threshold": 0.08365,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.0688,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.27299999999999996,
+            "left": {
+              "isLeaf": true,
+              "value": -0.004599451260245701,
+              "sampleCount": 69
+            },
+            "right": {
+              "isLeaf": true,
+              "value": -0.0015945719715391182,
+              "sampleCount": 23
+            },
+            "sampleCount": 92,
+            "gain": 0.00015575541705978714
+          },
+          "right": {
+            "isLeaf": true,
+            "value": -0.00019801429921840794,
+            "sampleCount": 44
+          },
+          "sampleCount": 136,
+          "gain": 0.0003965874759614156
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.093975,
+          "left": {
+            "isLeaf": true,
+            "value": 0.0016140208071401486,
+            "sampleCount": 28
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 3,
+            "featureName": "spindle_speed",
+            "threshold": 10343.75,
+            "left": {
+              "isLeaf": true,
+              "value": 0.008858860542914489,
+              "sampleCount": 11
+            },
+            "right": {
+              "isLeaf": true,
+              "value": 0.005074510242835769,
+              "sampleCount": 44
+            },
+            "sampleCount": 55,
+            "gain": 0.00012602750330461155
+          },
+          "sampleCount": 83,
+          "gain": 0.0003300075484185896
+        },
+        "sampleCount": 219,
+        "gain": 0.002580718356691987
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.37049999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.06268750000000001,
+          "left": {
+            "isLeaf": true,
+            "value": -0.004110110599321438,
+            "sampleCount": 63
+          },
+          "right": {
+            "isLeaf": true,
+            "value": -0.0010319857887360335,
+            "sampleCount": 80
+          },
+          "sampleCount": 143,
+          "gain": 0.0003339388520397827
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.09375,
+          "left": {
+            "isLeaf": true,
+            "value": 0.0014021779445352106,
+            "sampleCount": 30
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.005371197813123244,
+            "sampleCount": 52
+          },
+          "sampleCount": 82,
+          "gain": 0.0002996934780354226
+        },
+        "sampleCount": 225,
+        "gain": 0.002073197094986474
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 172.67749999999998,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.058225,
+          "left": {
+            "isLeaf": true,
+            "value": -0.004630152436076916,
+            "sampleCount": 38
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 1,
+            "featureName": "vibration",
+            "threshold": 0.1795,
+            "left": {
+              "isLeaf": true,
+              "value": -0.008807240466412342,
+              "sampleCount": 3
+            },
+            "right": {
+              "isLeaf": true,
+              "value": -0.0018050765062980673,
+              "sampleCount": 74
+            },
+            "sampleCount": 77,
+            "gain": 0.00014136008607272348
+          },
+          "sampleCount": 115,
+          "gain": 0.00016574017344078837
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 214.98,
+          "left": {
+            "isLeaf": true,
+            "value": 0.0015223184240399652,
+            "sampleCount": 61
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.004764884405111046,
+            "sampleCount": 42
+          },
+          "sampleCount": 103,
+          "gain": 0.0002615288142793963
+        },
+        "sampleCount": 218,
+        "gain": 0.001806316806008723
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.319875,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.0669625,
+          "left": {
+            "isLeaf": false,
+            "featureIndex": 5,
+            "featureName": "depth_of_cut",
+            "threshold": 0.738,
+            "left": {
+              "isLeaf": true,
+              "value": -0.005282180478507544,
+              "sampleCount": 23
+            },
+            "right": {
+              "isLeaf": true,
+              "value": -0.002763445649128103,
+              "sampleCount": 53
+            },
+            "sampleCount": 76,
+            "gain": 0.00010175482429669396
+          },
+          "right": {
+            "isLeaf": true,
+            "value": -0.0009680723392952157,
+            "sampleCount": 34
+          },
+          "sampleCount": 110,
+          "gain": 0.00015366414536669044
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.0943,
+          "left": {
+            "isLeaf": true,
+            "value": 0.001093313248110197,
+            "sampleCount": 49
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.004661658275433639,
+            "sampleCount": 50
+          },
+          "sampleCount": 99,
+          "gain": 0.00031511173003392597
+        },
+        "sampleCount": 209,
+        "gain": 0.0016519651118646677
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.36749999999999994,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 151.97375,
+          "left": {
+            "isLeaf": true,
+            "value": -0.003069906881074283,
+            "sampleCount": 69
+          },
+          "right": {
+            "isLeaf": true,
+            "value": -0.0005473236322325691,
+            "sampleCount": 66
+          },
+          "sampleCount": 135,
+          "gain": 0.00021465957874349613
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.0879,
+          "left": {
+            "isLeaf": true,
+            "value": 0.00033633148658894496,
+            "sampleCount": 14
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.003886064263650119,
+            "sampleCount": 64
+          },
+          "sampleCount": 78,
+          "gain": 0.00014474538587864213
+        },
+        "sampleCount": 213,
+        "gain": 0.0012785837629276137
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.316125,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.1935,
+          "left": {
+            "isLeaf": true,
+            "value": -0.005093024063760031,
+            "sampleCount": 13
+          },
+          "right": {
+            "isLeaf": true,
+            "value": -0.0019259834671932331,
+            "sampleCount": 96
+          },
+          "sampleCount": 109,
+          "gain": 0.0001148405723219927
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.45899999999999996,
+          "left": {
+            "isLeaf": true,
+            "value": 0.0013574067094346955,
+            "sampleCount": 63
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.004095009600118396,
+            "sampleCount": 40
+          },
+          "sampleCount": 103,
+          "gain": 0.00018335983844117447
+        },
+        "sampleCount": 212,
+        "gain": 0.0011819387191377992
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 206.2625,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 2,
+          "featureName": "acoustic_emission",
+          "threshold": 0.07175,
+          "left": {
+            "isLeaf": true,
+            "value": -0.0019568071918708396,
+            "sampleCount": 91
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.0002338500459099266,
+            "sampleCount": 60
+          },
+          "sampleCount": 151,
+          "gain": 0.00017352600045423324
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 3,
+          "featureName": "spindle_speed",
+          "threshold": 10315.25,
+          "left": {
+            "isLeaf": true,
+            "value": 0.007593861910784483,
+            "sampleCount": 8
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.002589067961356601,
+            "sampleCount": 45
+          },
+          "sampleCount": 53,
+          "gain": 0.00017013710361212788
+        },
+        "sampleCount": 204,
+        "gain": 0.0007701900534693535
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 189.46999999999997,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.272,
+          "left": {
+            "isLeaf": true,
+            "value": -0.0026147807370104676,
+            "sampleCount": 75
+          },
+          "right": {
+            "isLeaf": true,
+            "value": -0.0002003611182893733,
+            "sampleCount": 56
+          },
+          "sampleCount": 131,
+          "gain": 0.0001868975022909494
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.5195,
+          "left": {
+            "isLeaf": true,
+            "value": 0.0018359448715910786,
+            "sampleCount": 59
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.004737958413724979,
+            "sampleCount": 18
+          },
+          "sampleCount": 77,
+          "gain": 0.00011615359636168521
+        },
+        "sampleCount": 208,
+        "gain": 0.0008140116669793185
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 189.46999999999997,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.2735,
+          "left": {
+            "isLeaf": true,
+            "value": -0.002462895468404599,
+            "sampleCount": 74
+          },
+          "right": {
+            "isLeaf": true,
+            "value": -0.00021292423448266259,
+            "sampleCount": 63
+          },
+          "sampleCount": 137,
+          "gain": 0.00017226840525770776
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 231.64999999999998,
+          "left": {
+            "isLeaf": true,
+            "value": 0.00171401893351131,
+            "sampleCount": 58
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.004232406090663826,
+            "sampleCount": 22
+          },
+          "sampleCount": 80,
+          "gain": 0.00010115926827930586
+        },
+        "sampleCount": 217,
+        "gain": 0.0007427439172337427
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 0,
+        "featureName": "cutting_force",
+        "threshold": 189.46999999999997,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 138.805,
+          "left": {
+            "isLeaf": true,
+            "value": -0.0036333603386287053,
+            "sampleCount": 21
+          },
+          "right": {
+            "isLeaf": false,
+            "featureIndex": 2,
+            "featureName": "acoustic_emission",
+            "threshold": 0.0529875,
+            "left": {
+              "isLeaf": true,
+              "value": -0.004464115776276903,
+              "sampleCount": 8
+            },
+            "right": {
+              "isLeaf": true,
+              "value": -0.000513854986270532,
+              "sampleCount": 116
+            },
+            "sampleCount": 124,
+            "gain": 0.00011678251586136508
+          },
+          "sampleCount": 145,
+          "gain": 0.00014737236672096024
+        },
+        "right": {
+          "isLeaf": true,
+          "value": 0.0023072851455717414,
+          "sampleCount": 86
+        },
+        "sampleCount": 231,
+        "gain": 0.0006578446010210744
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 1,
+        "featureName": "vibration",
+        "threshold": 0.42112499999999997,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 0,
+          "featureName": "cutting_force",
+          "threshold": 157.18625,
+          "left": {
+            "isLeaf": true,
+            "value": -0.0020267582760885284,
+            "sampleCount": 80
+          },
+          "right": {
+            "isLeaf": true,
+            "value": -0.000011083143130666482,
+            "sampleCount": 73
+          },
+          "sampleCount": 153,
+          "gain": 0.00015508239249077292
+        },
+        "right": {
+          "isLeaf": false,
+          "featureIndex": 3,
+          "featureName": "spindle_speed",
+          "threshold": 10316.125,
+          "left": {
+            "isLeaf": true,
+            "value": 0.007577073968290424,
+            "sampleCount": 4
+          },
+          "right": {
+            "isLeaf": true,
+            "value": 0.0021953659272797737,
+            "sampleCount": 55
+          },
+          "sampleCount": 59,
+          "gain": 0.00010799681214422553
+        },
+        "sampleCount": 212,
+        "gain": 0.0005596100688934035
+      },
+      {
+        "isLeaf": false,
+        "featureIndex": 2,
+        "featureName": "acoustic_emission",
+        "threshold": 0.08365,
+        "left": {
+          "isLeaf": false,
+          "featureIndex": 1,
+          "featureName": "vibration",
+          "threshold": 0.184375,
+          "left": {
+            "isLeaf": true,
+            "value": -0.00427605690925824,
+            "sampleCount": 10
+          },
+          "right": {
+            "isLeaf": true,
+            "value": -0.0009192783101799902,
+            "sampleCount": 121
+          },
+          "sampleCount": 131,
+          "gain": 0.00010407812749242554
+        },
+        "right": {
+          "isLeaf": true,
+          "value": 0.0017933729653076475,
+          "sampleCount": 86
+        },
+        "sampleCount": 217,
+        "gain": 0.0004576140739182889
+      }
+    ],
+    "metrics": {
+      "mae": 0.0051,
+      "mse": 0.000036,
+      "rmse": 0.006,
+      "r2": 0.9766,
+      "trainSamples": 252,
+      "testSamples": 63,
+      "trainedAt": "2026-09-24T09:39:45.071Z",
+      "datasetName": "CNC Sensor Wear Dataset (PHM 2010 Aligned)"
+    },
+    "featureImportance": {
+      "cutting_force": 23.06,
+      "vibration": 46.89,
+      "acoustic_emission": 25.72,
+      "spindle_speed": 4.31,
+      "feed_rate": 0.01,
+      "depth_of_cut": 0.01
+    },
+    "evaluationPoints": [
+      {
+        "actual": 0.0903,
+        "predicted": 0.0834,
+        "residual": 0.0069
+      },
+      {
+        "actual": 0.0922,
+        "predicted": 0.091,
+        "residual": 0.0012
+      },
+      {
+        "actual": 0.0946,
+        "predicted": 0.1013,
+        "residual": -0.0067
+      },
+      {
+        "actual": 0.097,
+        "predicted": 0.0961,
+        "residual": 0.0009
+      },
+      {
+        "actual": 0.099,
+        "predicted": 0.0889,
+        "residual": 0.0101
+      },
+      {
+        "actual": 0.1013,
+        "predicted": 0.1063,
+        "residual": -0.005
+      },
+      {
+        "actual": 0.1034,
+        "predicted": 0.1082,
+        "residual": -0.0048
+      },
+      {
+        "actual": 0.1057,
+        "predicted": 0.0937,
+        "residual": 0.012
+      },
+      {
+        "actual": 0.1076,
+        "predicted": 0.1058,
+        "residual": 0.0018
+      },
+      {
+        "actual": 0.1095,
+        "predicted": 0.1032,
+        "residual": 0.0063
+      },
+      {
+        "actual": 0.112,
+        "predicted": 0.1086,
+        "residual": 0.0034
+      },
+      {
+        "actual": 0.1146,
+        "predicted": 0.1152,
+        "residual": -0.0006
+      },
+      {
+        "actual": 0.1165,
+        "predicted": 0.1103,
+        "residual": 0.0062
+      },
+      {
+        "actual": 0.119,
+        "predicted": 0.1177,
+        "residual": 0.0013
+      },
+      {
+        "actual": 0.1215,
+        "predicted": 0.1136,
+        "residual": 0.0079
+      },
+      {
+        "actual": 0.1236,
+        "predicted": 0.1228,
+        "residual": 0.0008
+      },
+      {
+        "actual": 0.1256,
+        "predicted": 0.1246,
+        "residual": 0.001
+      },
+      {
+        "actual": 0.1278,
+        "predicted": 0.1259,
+        "residual": 0.0019
+      },
+      {
+        "actual": 0.1297,
+        "predicted": 0.1235,
+        "residual": 0.0062
+      },
+      {
+        "actual": 0.1322,
+        "predicted": 0.1276,
+        "residual": 0.0046
+      },
+      {
+        "actual": 0.1342,
+        "predicted": 0.1365,
+        "residual": -0.0023
+      },
+      {
+        "actual": 0.1365,
+        "predicted": 0.1393,
+        "residual": -0.0028
+      },
+      {
+        "actual": 0.1385,
+        "predicted": 0.1431,
+        "residual": -0.0046
+      },
+      {
+        "actual": 0.1404,
+        "predicted": 0.1345,
+        "residual": 0.0059
+      },
+      {
+        "actual": 0.1425,
+        "predicted": 0.1492,
+        "residual": -0.0067
+      },
+      {
+        "actual": 0.1444,
+        "predicted": 0.1439,
+        "residual": 0.0005
+      },
+      {
+        "actual": 0.1467,
+        "predicted": 0.142,
+        "residual": 0.0047
+      },
+      {
+        "actual": 0.1492,
+        "predicted": 0.1454,
+        "residual": 0.0038
+      },
+      {
+        "actual": 0.1514,
+        "predicted": 0.1565,
+        "residual": -0.0051
+      },
+      {
+        "actual": 0.1539,
+        "predicted": 0.1642,
+        "residual": -0.0103
+      },
+      {
+        "actual": 0.1564,
+        "predicted": 0.1629,
+        "residual": -0.0065
+      },
+      {
+        "actual": 0.1582,
+        "predicted": 0.1533,
+        "residual": 0.0049
+      },
+      {
+        "actual": 0.1603,
+        "predicted": 0.1685,
+        "residual": -0.0082
+      },
+      {
+        "actual": 0.1628,
+        "predicted": 0.1618,
+        "residual": 0.001
+      },
+      {
+        "actual": 0.1647,
+        "predicted": 0.1766,
+        "residual": -0.0119
+      },
+      {
+        "actual": 0.1667,
+        "predicted": 0.1709,
+        "residual": -0.0042
+      },
+      {
+        "actual": 0.1689,
+        "predicted": 0.1774,
+        "residual": -0.0085
+      },
+      {
+        "actual": 0.1708,
+        "predicted": 0.1649,
+        "residual": 0.0059
+      },
+      {
+        "actual": 0.1728,
+        "predicted": 0.1717,
+        "residual": 0.0011
+      },
+      {
+        "actual": 0.1746,
+        "predicted": 0.1752,
+        "residual": -0.0006
+      },
+      {
+        "actual": 0.1766,
+        "predicted": 0.1817,
+        "residual": -0.0051
+      },
+      {
+        "actual": 0.1784,
+        "predicted": 0.1724,
+        "residual": 0.006
+      },
+      {
+        "actual": 0.1803,
+        "predicted": 0.1773,
+        "residual": 0.003
+      },
+      {
+        "actual": 0.1827,
+        "predicted": 0.1733,
+        "residual": 0.0094
+      },
+      {
+        "actual": 0.1846,
+        "predicted": 0.1819,
+        "residual": 0.0027
+      },
+      {
+        "actual": 0.1869,
+        "predicted": 0.1847,
+        "residual": 0.0022
+      },
+      {
+        "actual": 0.1893,
+        "predicted": 0.1858,
+        "residual": 0.0035
+      },
+      {
+        "actual": 0.1914,
+        "predicted": 0.1879,
+        "residual": 0.0035
+      },
+      {
+        "actual": 0.1935,
+        "predicted": 0.1913,
+        "residual": 0.0022
+      },
+      {
+        "actual": 0.1958,
+        "predicted": 0.1906,
+        "residual": 0.0052
+      },
+      {
+        "actual": 0.1976,
+        "predicted": 0.1948,
+        "residual": 0.0028
+      },
+      {
+        "actual": 0.1998,
+        "predicted": 0.195,
+        "residual": 0.0048
+      },
+      {
+        "actual": 0.202,
+        "predicted": 0.195,
+        "residual": 0.007
+      },
+      {
+        "actual": 0.2041,
+        "predicted": 0.2007,
+        "residual": 0.0034
+      },
+      {
+        "actual": 0.2063,
+        "predicted": 0.1967,
+        "residual": 0.0096
+      },
+      {
+        "actual": 0.2084,
+        "predicted": 0.2013,
+        "residual": 0.0071
+      },
+      {
+        "actual": 0.2103,
+        "predicted": 0.1994,
+        "residual": 0.0109
+      },
+      {
+        "actual": 0.2125,
+        "predicted": 0.2093,
+        "residual": 0.0032
+      },
+      {
+        "actual": 0.2145,
+        "predicted": 0.2127,
+        "residual": 0.0018
+      },
+      {
+        "actual": 0.2167,
+        "predicted": 0.2086,
+        "residual": 0.0081
+      },
+      {
+        "actual": 0.2191,
+        "predicted": 0.2127,
+        "residual": 0.0064
+      },
+      {
+        "actual": 0.2212,
+        "predicted": 0.2127,
+        "residual": 0.0085
+      },
+      {
+        "actual": 0.2255,
+        "predicted": 0.2127,
+        "residual": 0.0128
+      }
+    ]
+  }
+}

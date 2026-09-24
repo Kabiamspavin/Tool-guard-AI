@@ -1,0 +1,6 @@
+{
+  "name": "ToolGuard AI — Intelligent CNC Tool Wear Prediction",
+  "description": "Predictive maintenance and tool wear estimation for CNC smart manufacturing using XGBoost, SHAP explainability, sensor analytics, and Gemini AI assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
